@@ -1,8 +1,8 @@
 # 💰 Crypto Tracker Dashboard
 
-A real-time cryptocurrency tracking dashboard built with Angular and Material Design. Track prices, market caps, and trends for the top cryptocurrencies powered by the CoinGecko API.
+A modern, real-time cryptocurrency tracking dashboard built with Angular 21 and Material Design. Features auto-refresh, interactive charts, and comprehensive market data for 100+ cryptocurrencies.
 
-![Dashboard Preview](screenshot.png)
+![Crypto Tracker](screenshot.png)
 
 🔗 **Live Demo:** [https://ahtalebi.github.io/crypto-tracker/](https://ahtalebi.github.io/crypto-tracker/)
 
@@ -10,34 +10,36 @@ A real-time cryptocurrency tracking dashboard built with Angular and Material De
 
 ## ✨ Features
 
-### 📊 **Real-Time Data**
-- Live cryptocurrency prices in EUR
-- Automatic data refresh
-- 100+ cryptocurrencies tracked
-- Powered by CoinGecko API (no signup required!)
+### 🔄 **Real-Time Updates**
+- Auto-refresh every 30 seconds (toggle on/off)
+- Manual refresh button
+- Live countdown timer
+- Last update timestamp
 
-### 📈 **Interactive Visualizations**
-- **Price Comparison Chart** - Top 10 cryptocurrencies by price
-- **Market Cap Distribution** - Pie chart showing market dominance
-- **24h Change Chart** - Color-coded gainers (green) and losers (red)
-- **Trading Volume Chart** - Horizontal bar chart of 24h trading activity
+### 📊 **Three Interactive Tabs**
+1. **Overview** - Top 12 cryptocurrencies with detailed cards
+2. **Charts & Analytics** - 4 interactive visualizations
+3. **All Cryptocurrencies** - Complete data table
 
-### 🎯 **Smart Filtering**
-- Search by name or symbol (Bitcoin, BTC, etc.)
+### 📈 **Advanced Visualizations**
+- **Price Comparison** - Bar chart of top 10 by price
+- **Market Dominance** - Doughnut chart showing market cap distribution
+- **24h Performance** - Color-coded gains/losses
+- **Trading Volume** - Horizontal bar chart
+
+### 🎯 **Smart Features**
+- Search by name or symbol
 - Sort by: Market Cap, Price, 24h Change, Volume
-- Show Top 10, 25, 50, or 100 cryptocurrencies
+- Filter: Top 10, 25, 50, or 100
+- Auto-update stats cards
+- Responsive design (mobile, tablet, desktop)
 
-### 📋 **Comprehensive Data Table**
-- Complete market data for all cryptocurrencies
-- Includes: Rank, Name, Price, 24h %, 7d %, Market Cap, Volume
-- Color-coded positive (green) and negative (red) changes
-- Scrollable and responsive
-
-### 💎 **Beautiful UI**
-- Google Material Design components
-- Responsive layout (mobile, tablet, desktop)
-- Smooth animations and transitions
-- Professional color scheme
+### 💎 **Beautiful Modern UI**
+- Material Design components
+- Gradient stat cards
+- Smooth animations
+- Professional typography (Inter font)
+- Color-coded positive/negative changes
 
 ---
 
@@ -47,9 +49,9 @@ A real-time cryptocurrency tracking dashboard built with Angular and Material De
 - **UI Library:** Angular Material
 - **Charts:** Chart.js
 - **Language:** TypeScript
-- **Styling:** CSS3
-- **API:** CoinGecko API (Free, no key required)
-- **Deployment:** GitHub Pages
+- **Styling:** CSS3 with custom gradients
+- **API:** CoinGecko (Free, no key required)
+- **Fonts:** Google Fonts (Inter)
 
 ---
 
@@ -57,59 +59,80 @@ A real-time cryptocurrency tracking dashboard built with Angular and Material De
 
 ### Prerequisites
 
-Ensure you have the following installed:
-- **Node.js** v20+ ([Download](https://nodejs.org/))
-- **npm** v10+ (comes with Node.js)
-- **Angular CLI** (installed in step 2)
+Make sure you have the following installed on your system:
 
-Check your versions:
+- **Node.js** v20.0.0 or higher → [Download Node.js](https://nodejs.org/)
+- **npm** v10.0.0 or higher (comes with Node.js)
+- **Git** → [Download Git](https://git-scm.com/)
+
+**Check your versions:**
 ```bash
-node --version  # Should show v20.x.x or higher
-npm --version   # Should show v10.x.x or higher
+node --version   # Should output v20.x.x or higher
+npm --version    # Should output v10.x.x or higher
+git --version    # Should output git version 2.x.x or higher
 ```
 
-### Installation
+---
 
-**Step 1: Clone the repository**
+### 📥 Installation Steps
+
+**Step 1: Clone the Repository**
 ```bash
+# Using SSH (recommended if you have SSH keys set up)
+git clone git@github.com:ahtalebi/crypto-tracker.git
+
+# OR using HTTPS
 git clone https://github.com/ahtalebi/crypto-tracker.git
+
+# Navigate into the project
 cd crypto-tracker
 ```
 
-**Step 2: Install dependencies**
+**Step 2: Install Dependencies**
 ```bash
 npm install
 ```
 
-This installs:
-- Angular framework
+This will install:
+- Angular framework (v21)
 - Angular Material components
 - Chart.js for visualizations
-- TypeScript and build tools
+- TypeScript compiler
+- All other required packages
 
-**Step 3: Run the development server**
+**Wait for installation to complete (usually 1-2 minutes).**
+
+**Step 3: Start the Development Server**
 ```bash
 ng serve
 ```
 
-**Step 4: Open in browser**
+You should see output like:
+```
+✔ Browser application bundle generation complete.
+Initial chunk files   | Names         | Raw size
+main.js               | main          | 2.5 MB   
+...
+Application bundle generation complete. [5.123 seconds]
+
+Watch mode enabled. Watching for file changes...
+➜  Local:   http://localhost:4200/
+```
+
+**Step 4: Open in Browser**
 
 Navigate to: **http://localhost:4200**
 
-The app will automatically reload when you make changes to the source files.
-
-### 🎯 You Should See:
-
-- ✅ Dashboard header with gradient background
-- ✅ 4 statistics cards (Total Market Cap, Biggest Gainer, Biggest Loser, Total Cryptos)
+You should see:
+- ✅ Header with "Crypto Tracker" and auto-refresh controls
+- ✅ 4 colorful stats cards
 - ✅ Search and filter controls
-- ✅ 12 cryptocurrency cards with logos and prices
-- ✅ 4 interactive charts
-- ✅ Full data table with all cryptocurrencies
+- ✅ 3 tabs: Overview, Charts & Analytics, All Cryptocurrencies
+- ✅ Real cryptocurrency data loading
 
 ---
 
-## 📁 Project Structure
+## 📂 Project Structure
 ```
 crypto-tracker/
 ├── src/
@@ -118,7 +141,7 @@ crypto-tracker/
 │   │   │   ├── dashboard.component.ts    # Component logic
 │   │   │   ├── dashboard.component.html  # Template
 │   │   │   └── dashboard.component.css   # Styles
-│   │   ├── crypto.service.ts             # API service
+│   │   ├── crypto.service.ts             # API service (CoinGecko)
 │   │   ├── app.ts                        # Root component
 │   │   └── app.config.ts                 # App configuration
 │   ├── index.html                        # Entry HTML
@@ -129,6 +152,7 @@ crypto-tracker/
 ├── angular.json                          # Angular workspace config
 ├── package.json                          # Dependencies
 ├── tsconfig.json                         # TypeScript config
+├── .gitignore                            # Git ignore rules
 └── README.md                             # This file
 ```
 
@@ -136,63 +160,62 @@ crypto-tracker/
 
 ## 🎨 Features Breakdown
 
+### Auto-Refresh System
+- **Default:** Updates every 30 seconds
+- **Toggle:** Click the refresh icon to enable/disable
+- **Countdown:** Shows seconds until next refresh
+- **Manual:** Click refresh button anytime
+- **Smart:** Only refreshes when tab is active
+
 ### Statistics Cards
-Four key metrics updated in real-time:
-1. **Total Market Cap** - Combined value of all displayed cryptocurrencies
-2. **Biggest Gainer** - Cryptocurrency with highest 24h % increase (green)
-3. **Biggest Loser** - Cryptocurrency with lowest 24h % decrease (red)
-4. **Total Cryptocurrencies** - Number of coins currently displayed
+Four gradient cards showing:
+1. **Total Market Cap** (Purple) - Sum of all displayed cryptos
+2. **Biggest Gainer** (Green) - Highest 24h % increase
+3. **Biggest Loser** (Red) - Lowest 24h % decrease
+4. **Total Count** (Blue) - Number of cryptocurrencies shown
 
-### Interactive Filters
-- **Search Box** - Type any coin name (Bitcoin) or symbol (BTC)
-- **Sort By Dropdown**:
-  - Market Cap (default) - Largest to smallest
-  - Price - Highest to lowest
-  - 24h Change - Best performers first
-  - Volume - Most traded first
-- **Show Top Dropdown** - Display 10, 25, 50, or 100 coins
+### Tab 1: Overview
+- **12 Large Cards** - Top cryptocurrencies
+- Each card shows:
+  - Coin logo and name
+  - Current price in EUR
+  - 24h change with arrow icon (green ↑ or red ↓)
+  - Market cap
+  - 24h volume
+  - 24h high
+  - 24h low
+  - Market cap rank badge
 
-### Cryptocurrency Cards
-Each card displays:
-- Coin logo (from CoinGecko)
-- Name and symbol
-- Current price in EUR
-- 24h price change with icon (📈 up or 📉 down)
-- Market cap (formatted: €1.23T, €456B, etc.)
-- 24h trading volume
+### Tab 2: Charts & Analytics
+Four interactive charts:
 
-### Interactive Charts
+1. **Price Comparison (Bar Chart)**
+   - Top 10 by current price
+   - Blue bars
+   - Easy to compare values
 
-**1. Price Comparison (Bar Chart)**
-- Shows top 10 cryptocurrencies by price
-- Blue bars, easy comparison
-- Y-axis: Price in EUR
+2. **Market Dominance (Doughnut Chart)**
+   - Top 5 by market cap
+   - Shows percentage distribution
+   - Colorful segments with legend
 
-**2. Market Cap Distribution (Pie Chart)**
-- Top 5 cryptocurrencies
-- Shows market dominance visually
-- Different colors for each coin
+3. **24h Performance (Bar Chart)**
+   - Top 10 by 24h change
+   - Green bars = gains
+   - Red bars = losses
 
-**3. 24h Price Change (Bar Chart)**
-- Top 10 cryptocurrencies
-- Green bars = positive change
-- Red bars = negative change
-- Y-axis: Percentage change
+4. **Trading Volume (Horizontal Bar Chart)**
+   - Top 10 by 24h volume
+   - Orange bars
+   - Shows trading activity
 
-**4. Trading Volume (Horizontal Bar Chart)**
-- Top 10 by 24h volume
-- Shows which coins are most actively traded
-- Orange bars, horizontal layout
-
-### Data Table
-Complete table with:
-- Rank (#) - Market cap ranking
-- Coin - Logo, name, and symbol
-- Price - Current price in EUR
-- 24h % - Color-coded change
-- 7d % - Weekly change
-- Market Cap - Total market value
-- Volume (24h) - Trading activity
+### Tab 3: All Cryptocurrencies
+Complete data table with:
+- **Columns:** Rank, Coin (logo + name), Price, 24h %, 7d %, Market Cap, Volume, Circulating Supply
+- **Sorting:** Click column headers (if implemented)
+- **Badge:** Shows total count (e.g., "50" or "100")
+- **Scrollable:** View all filtered cryptocurrencies
+- **Icons:** Arrow icons for positive/negative changes
 
 ---
 
@@ -210,40 +233,16 @@ ng serve --port 4300
 # Build for production
 ng build --configuration production
 
-# Run tests
+# Run tests (if available)
 ng test
 
 # Lint code
 ng lint
+
+# Clean install (if having issues)
+rm -rf node_modules package-lock.json
+npm install
 ```
-
----
-
-## 📊 API Information
-
-### CoinGecko API
-This app uses the **CoinGecko API** - a free cryptocurrency data API.
-
-**Endpoint Used:**
-```
-https://api.coingecko.com/api/v3/coins/markets
-```
-
-**Parameters:**
-- `vs_currency=eur` - Prices in Euros
-- `order=market_cap_desc` - Sort by market cap
-- `per_page=100` - Get 100 coins
-- `sparkline=false` - No sparkline data
-- `price_change_percentage=7d` - Include 7-day change
-
-**Rate Limits:**
-- Free tier: 10-50 calls/minute (generous!)
-- No API key required
-- No signup needed
-
-**Data Refreshed:**
-- Manual: Reload the page
-- Auto-refresh: Can add `setInterval()` for live updates
 
 ---
 
@@ -254,33 +253,37 @@ https://api.coingecko.com/api/v3/coins/markets
 ng build --configuration production
 ```
 
-Output: `dist/crypto-tracker/browser/`
+Output will be in: `dist/crypto-tracker/browser/`
 
 ### Deploy to GitHub Pages
 
-**Step 1: Build**
+**Step 1: Install deployment tool**
+```bash
+npm install -g angular-cli-ghpages
+```
+
+**Step 2: Build with base href**
 ```bash
 ng build --base-href "/crypto-tracker/"
 ```
 
-**Step 2: Deploy**
+**Step 3: Deploy**
 ```bash
-npm install -g angular-cli-ghpages
 npx angular-cli-ghpages --dir=dist/crypto-tracker/browser
 ```
 
-**Step 3: Access**
-Your dashboard will be live at:
+**Step 4: Access your live site**
 ```
-https://YOUR_USERNAME.github.io/crypto-tracker/
+https://ahtalebi.github.io/crypto-tracker/
 ```
 
 ### Deploy to Vercel (Alternative)
 
 1. Push code to GitHub
 2. Go to [vercel.com](https://vercel.com)
-3. Import repository
-4. Deploy automatically!
+3. Import your repository
+4. Vercel auto-detects Angular
+5. Deploy! (Takes ~2 minutes)
 
 ### Deploy to Netlify (Alternative)
 
@@ -289,30 +292,110 @@ https://YOUR_USERNAME.github.io/crypto-tracker/
 3. Connect repository
 4. Build command: `ng build --configuration production`
 5. Publish directory: `dist/crypto-tracker/browser`
+6. Deploy!
 
 ---
 
-## 💡 Usage Examples
+## 🐛 Troubleshooting
 
-### Find Best Performing Coins
-1. Click "Sort By" dropdown
-2. Select "24h Change"
-3. See top gainers first (green percentages)
+### Problem: "ng: command not found"
 
-### Search for Specific Coin
-1. Type "Bitcoin" or "BTC" in search box
-2. Results filter immediately
-3. Clear search to see all coins again
+**Solution:**
+```bash
+# Install Angular CLI globally
+npm install -g @angular/cli
 
-### Compare Market Caps
-1. Look at the pie chart
-2. See which coins dominate the market
-3. Bitcoin typically 40-50% of total
+# Verify installation
+ng version
+```
 
-### Track Your Favorites
-1. Use search to find coins
-2. Check their 24h and 7d changes
-3. See if they're gaining or losing
+### Problem: "Cannot find module 'chart.js'"
+
+**Solution:**
+```bash
+npm install chart.js
+```
+
+### Problem: Port 4200 already in use
+
+**Solution:**
+```bash
+# Use a different port
+ng serve --port 4300
+
+# OR find and kill the process using port 4200
+# On Linux/Mac:
+lsof -i :4200
+kill -9 <PID>
+
+# On Windows:
+netstat -ano | findstr :4200
+taskkill /PID <PID> /F
+```
+
+### Problem: Data not loading
+
+**Solutions:**
+1. Check internet connection (API requires internet)
+2. Open DevTools (F12) → Console tab → Check for errors
+3. Try manual refresh button
+4. Wait 2-3 seconds for initial load
+5. CoinGecko API might be rate-limited (wait 1 minute, reload)
+
+### Problem: Charts not displaying
+
+**Solutions:**
+1. Click on "Charts & Analytics" tab
+2. Wait 1-2 seconds for charts to render
+3. Try switching tabs back and forth
+4. Hard refresh: `Ctrl + Shift + R`
+
+### Problem: Material components look broken
+
+**Solution:**
+```bash
+# Re-install Angular Material
+ng add @angular/material
+# Choose any theme (Indigo/Pink recommended)
+```
+
+### Problem: Auto-refresh not working
+
+**Solutions:**
+1. Check if auto-refresh is enabled (icon should be green)
+2. Click the toggle button to disable/enable
+3. Use manual refresh button
+4. Check browser console for errors
+
+---
+
+## 📊 API Information
+
+### CoinGecko API
+
+This app uses the **CoinGecko API v3** - completely free!
+
+**Endpoint:**
+```
+https://api.coingecko.com/api/v3/coins/markets
+```
+
+**Parameters:**
+- `vs_currency=eur` - Prices in Euros
+- `order=market_cap_desc` - Sort by market cap
+- `per_page=100` - Fetch 100 coins
+- `sparkline=false` - No sparkline data
+- `price_change_percentage=7d` - Include 7-day change
+
+**Rate Limits:**
+- Free tier: 10-50 calls per minute
+- **No API key required!**
+- **No signup needed!**
+
+**Data Refresh:**
+- Auto: Every 30 seconds (if enabled)
+- Manual: Click refresh button
+- On load: When opening the app
 
 ---
 
@@ -320,71 +403,41 @@ https://YOUR_USERNAME.github.io/crypto-tracker/
 
 Building this project teaches:
 
-### Frontend Development
-- ✅ Angular component architecture
-- ✅ TypeScript type safety
-- ✅ Reactive programming with async/await
-- ✅ Angular Material components
-- ✅ Responsive CSS Grid layouts
+### Angular Skills
+- ✅ Component architecture
+- ✅ Standalone components (Angular 21+)
+- ✅ Services and dependency injection
+- ✅ Template syntax and data binding
+- ✅ Material Design components
+- ✅ Tabs and navigation
+- ✅ Forms and ngModel
+- ✅ Pipes (date, number formatting)
+
+### TypeScript
+- ✅ Interfaces and types
+- ✅ Async/await
+- ✅ Arrow functions
+- ✅ Array methods (map, filter, sort)
+- ✅ Type safety
 
 ### API Integration
 - ✅ HTTP requests with fetch()
-- ✅ Parsing JSON responses
+- ✅ JSON parsing
 - ✅ Error handling
 - ✅ Data transformation
 
 ### Data Visualization
 - ✅ Chart.js integration
-- ✅ Multiple chart types (bar, pie, horizontal bar)
+- ✅ Multiple chart types
 - ✅ Dynamic data updates
-- ✅ Color coding for clarity
+- ✅ Color coding
 
-### UX/UI Design
-- ✅ Material Design principles
-- ✅ Color psychology (green=good, red=bad)
-- ✅ Number formatting (K, M, B, T)
-- ✅ Loading states
+### Modern Web Development
 - ✅ Responsive design
-
-### Software Engineering
-- ✅ Service-based architecture
-- ✅ Separation of concerns
-- ✅ TypeScript interfaces
-- ✅ Code organization
+- ✅ CSS Grid and Flexbox
+- ✅ Custom animations
 - ✅ Git workflow
-
----
-
-## 🐛 Troubleshooting
-
-### Problem: "ng: command not found"
-```bash
-npm install -g @angular/cli
-ng version
-```
-
-### Problem: Charts not displaying
-- Wait 2-3 seconds for data to load
-- Check browser console (F12) for errors
-- Hard refresh: `Ctrl + Shift + R`
-
-### Problem: "Cannot find module 'chart.js'"
-```bash
-npm install chart.js
-```
-
-### Problem: Data not loading
-- Check internet connection (API requires internet)
-- Open browser DevTools (F12) → Network tab
-- Look for failed requests to coingecko.com
-- CoinGecko might be rate limiting (wait 1 minute, reload)
-
-### Problem: Material components look wrong
-```bash
-# Re-add Angular Material
-ng add @angular/material
-# Choose any theme
-```
+- ✅ Deployment strategies
 
 ---
 
@@ -392,25 +445,26 @@ ng add @angular/material
 
 Potential features to add:
 
-- [ ] **Auto-refresh** - Update prices every 30 seconds
-- [ ] **Favorites/Watchlist** - Save favorite coins (localStorage)
 - [ ] **Price Alerts** - Notify when price hits target
+- [ ] **Favorites/Watchlist** - Save favorite coins
 - [ ] **Historical Charts** - 7d, 30d, 1y price graphs
-- [ ] **Portfolio Tracker** - Track your crypto holdings
+- [ ] **Portfolio Tracker** - Track your holdings
 - [ ] **Dark Mode** - Toggle light/dark theme
-- [ ] **Currency Switcher** - USD, EUR, GBP, etc.
-- [ ] **News Feed** - Latest crypto news integration
-- [ ] **Compare Mode** - Side-by-side coin comparison
-- [ ] **Export Data** - Download CSV/Excel
-- [ ] **Advanced Filters** - By market cap range, price range
+- [ ] **Currency Switcher** - USD, GBP, JPY, etc.
+- [ ] **News Feed** - Latest crypto news
+- [ ] **Compare Mode** - Side-by-side comparison
+- [ ] **Export Data** - Download as CSV/Excel
+- [ ] **Advanced Filters** - By market cap range, volume
 - [ ] **Trending Coins** - Most searched/viewed
-- [ ] **NFT Support** - Track NFT collections
+- [ ] **Mobile App** - React Native version
+- [ ] **WebSocket** - Real-time price streaming
+- [ ] **Trading Signals** - Buy/sell indicators
 
 ---
 
 ## 🤝 Contributing
 
-Contributions welcome! To contribute:
+Contributions are welcome! Here's how:
 
 1. Fork the repository
 2. Create feature branch: `git checkout -b feature/AmazingFeature`
@@ -418,36 +472,41 @@ Contributions welcome! To contribute:
 4. Push to branch: `git push origin feature/AmazingFeature`
 5. Open Pull Request
 
-**Ideas for contributions:**
+**Contribution Ideas:**
 - Add new chart types
 - Implement dark mode
-- Add more filtering options
-- Improve mobile responsiveness
 - Add unit tests
+- Improve mobile UI
+- Add more filtering options
 - Optimize performance
+- Add accessibility features
 
 ---
 
 ## 📜 License
 
-This project is licensed under the MIT License.
+This project is licensed under the **MIT License**.
 
-**MIT License** means:
+**What this means:**
 - ✅ Free to use
 - ✅ Free to modify
 - ✅ Free to distribute
 - ✅ Can use commercially
+- ✅ No warranty provided
+
+See [LICENSE](LICENSE) file for details.
 
 ---
 
 ## 🙏 Acknowledgments
 
-- **Data Provider:** [CoinGecko API](https://www.coingecko.com/en/api)
+- **Data Provider:** [CoinGecko API](https://www.coingecko.com/en/api) - Free cryptocurrency data
 - **Framework:** [Angular](https://angular.io/) by Google
-- **UI Library:** [Angular Material](https://material.angular.io/)
+- **UI Components:** [Angular Material](https://material.angular.io/)
 - **Charts:** [Chart.js](https://www.chartjs.org/)
 - **Icons:** Material Icons
-- **Inspiration:** Modern fintech dashboards
+- **Fonts:** [Google Fonts](https://fonts.google.com/) - Inter
+- **Inspiration:** Modern fintech and trading platforms
 
 ---
 
@@ -455,44 +514,79 @@ This project is licensed under the MIT License.
 
 **Amir Talebi**
 - GitHub: [@ahtalebi](https://github.com/ahtalebi)
-- Project: [github.com/ahtalebi/crypto-tracker](https://github.com/ahtalebi/crypto-tracker)
+- Repository: [github.com/ahtalebi/crypto-tracker](https://github.com/ahtalebi/crypto-tracker)
 - Live Demo: [ahtalebi.github.io/crypto-tracker](https://ahtalebi.github.io/crypto-tracker/)
 
 ---
 
 ## 📚 Additional Resources
 
-- [Angular Documentation](https://angular.io/docs)
+### Learn Angular
+- [Official Angular Docs](https://angular.io/docs)
 - [Angular Material Guides](https://material.angular.io/guides)
-- [Chart.js Documentation](https://www.chartjs.org/docs/)
-- [CoinGecko API Docs](https://www.coingecko.com/en/api/documentation)
+- [Angular Tutorial](https://angular.io/tutorial)
+
+### Learn TypeScript
 - [TypeScript Handbook](https://www.typescriptlang.org/docs/)
-- [RxJS Guide](https://rxjs.dev/guide/overview)
+- [TypeScript Deep Dive](https://basarat.gitbook.io/typescript/)
 
----
+### Learn Chart.js
+- [Chart.js Documentation](https://www.chartjs.org/docs/)
+- [Chart.js Samples](https://www.chartjs.org/samples/)
 
-**Made with ❤️ and ☕ by Amir Talebi**
-
-*Building beautiful dashboards, one crypto at a time* 💰
-
-**Last Updated:** November 2025
+### CoinGecko API
+- [API Documentation](https://www.coingecko.com/en/api/documentation)
+- [API Status](https://status.coingecko.com/)
 
 ---
 
 ## 🎯 Quick Start Summary
 ```bash
-# Clone
+# 1. Clone
 git clone https://github.com/ahtalebi/crypto-tracker.git
 cd crypto-tracker
 
-# Install
+# 2. Install
 npm install
 
-# Run
+# 3. Run
 ng serve
 
-# Open
+# 4. Open browser
 # http://localhost:4200
+
+# That's it! 🚀
 ```
 
-**That's it! You're tracking crypto! 🚀**
+---
+
+## 🌟 Star the Project
+
+If you find this project helpful, please give it a ⭐ on GitHub!
+
+It helps others discover the project and motivates continued development.
+
+---
+
+**Made with ❤️ and ☕ by Amir Talebi**
+
+*Real-time crypto tracking made simple and beautiful* 💰
+
+**Last Updated:** November 2025
+
+---
+
+## 📸 Screenshots
+
+### Overview Tab
+![Overview](docs/screenshot-overview.png)
+
+### Charts Tab
+![Charts](docs/screenshot-charts.png)
+
+### Table Tab
+![Table](docs/screenshot-table.png)
+
+---
+
+**Happy Crypto Tracking! 📈🚀**
