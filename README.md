@@ -54,7 +54,7 @@ A modern, real-time cryptocurrency tracking dashboard built with Angular 21 and 
 - **Charts:** Chart.js
 - **Language:** TypeScript
 - **Styling:** CSS3 with custom gradients
-- **API:** CoinGecko (Free, no key required)
+- **API:** CoinGecko API v3 (Free, no key required)
 - **Fonts:** Google Fonts (Inter)
 
 ---
@@ -376,31 +376,179 @@ ng add @angular/material
 
 ## 📊 API Information
 
-### CoinGecko API
+### Data Source: CoinGecko API
 
-This app uses the **CoinGecko API v3** - completely free!
+This application uses the **[CoinGecko API v3](https://www.coingecko.com/en/api)** - a completely free cryptocurrency data API with no signup or API key required!
 
-**Endpoint:**
+**Official Website:** [https://www.coingecko.com/](https://www.coingecko.com/)
+
+**API Documentation:** [https://www.coingecko.com/en/api/documentation](https://www.coingecko.com/en/api/documentation)
+
+---
+
+### Working API Endpoint
+
+**Full URL used in this app:**
 ```
-https://api.coingecko.com/api/v3/coins/markets
+https://api.coingecko.com/api/v3/coins/markets?vs_currency=eur&order=market_cap_desc&per_page=100&sparkline=false&price_change_percentage=7d
 ```
 
-**Parameters:**
-- `vs_currency=eur` - Prices in Euros
-- `order=market_cap_desc` - Sort by market cap
-- `per_page=100` - Fetch 100 coins
-- `sparkline=false` - No sparkline data
-- `price_change_percentage=7d` - Include 7-day change
+**🔗 Click to test:** [Try the API in your browser](https://api.coingecko.com/api/v3/coins/markets?vs_currency=eur&order=market_cap_desc&per_page=10)
 
-**Rate Limits:**
-- Free tier: 10-50 calls per minute
-- **No API key required!**
-- **No signup needed!**
+---
 
-**Data Refresh:**
-- Auto: Every 30 seconds (if enabled)
-- Manual: Click refresh button
-- On load: When opening the app
+### API Parameters Explained
+
+| Parameter | Value | Description |
+|-----------|-------|-------------|
+| `vs_currency` | `eur` | Display prices in Euros (can be usd, gbp, jpy, etc.) |
+| `order` | `market_cap_desc` | Sort by market capitalization (highest first) |
+| `per_page` | `100` | Number of cryptocurrencies to fetch (max 250) |
+| `sparkline` | `false` | Don't include 7-day price sparkline data |
+| `price_change_percentage` | `7d` | Include 7-day price change percentage |
+
+---
+
+### Example API Response
+```json
+[
+  {
+    "id": "bitcoin",
+    "symbol": "btc",
+    "name": "Bitcoin",
+    "image": "https://coin-images.coingecko.com/coins/images/1/large/bitcoin.png",
+    "current_price": 88234.50,
+    "market_cap": 1745234567890,
+    "market_cap_rank": 1,
+    "total_volume": 45678901234,
+    "high_24h": 89500.00,
+    "low_24h": 86500.00,
+    "price_change_24h": 2145.67,
+    "price_change_percentage_24h": 2.49,
+    "price_change_percentage_7d": 5.23,
+    "circulating_supply": 19654321.0,
+    "total_supply": 21000000.0,
+    "max_supply": 21000000.0,
+    "ath": 95234.00,
+    "ath_date": "2024-03-14T07:10:36.635Z",
+    "atl": 67.81,
+    "atl_date": "2013-07-06T00:00:00.000Z",
+    "last_updated": "2025-11-30T15:45:23.456Z"
+  }
+]
+```
+
+---
+
+### Rate Limits
+
+**Free Tier:**
+- **10-50 calls per minute** (depending on server load)
+- **No daily limit**
+- **No API key required**
+- **No signup needed**
+- **No credit card needed**
+
+**Enterprise Tier** (not needed for this app):
+- Unlimited calls
+- Higher rate limits
+- Dedicated support
+- [Pricing](https://www.coingecko.com/en/api/pricing)
+
+---
+
+### How We Use the API
+
+**In the app (`crypto.service.ts`):**
+```typescript
+async loadCryptoData(limit: number = 50): Promise<CryptoData[]> {
+  const url = `https://api.coingecko.com/api/v3/coins/markets?vs_currency=eur&order=market_cap_desc&per_page=${limit}&sparkline=false&price_change_percentage=7d`;
+  
+  const response = await fetch(url);
+  const data = await response.json();
+  return data;
+}
+```
+
+---
+
+### Testing the API Yourself
+
+**1. Test in Browser:**
+
+Open this URL in your browser:
+```
+https://api.coingecko.com/api/v3/coins/markets?vs_currency=eur&order=market_cap_desc&per_page=10
+```
+
+You'll see JSON data for the top 10 cryptocurrencies!
+
+**2. Test with curl:**
+```bash
+curl "https://api.coingecko.com/api/v3/coins/markets?vs_currency=eur&order=market_cap_desc&per_page=5"
+```
+
+**3. Test with JavaScript:**
+```javascript
+fetch('https://api.coingecko.com/api/v3/coins/markets?vs_currency=eur&order=market_cap_desc&per_page=5')
+  .then(response => response.json())
+  .then(data => console.log(data));
+```
+
+---
+
+### Alternative Currency Options
+
+Change `vs_currency` parameter to get prices in different currencies:
+
+- **USD:** `vs_currency=usd`
+- **GBP:** `vs_currency=gbp`
+- **JPY:** `vs_currency=jpy`
+- **CNY:** `vs_currency=cny`
+- **INR:** `vs_currency=inr`
+- **AUD:** `vs_currency=aud`
+- **CAD:** `vs_currency=cad`
+
+**Example:**
+```
+https://api.coingecko.com/api/v3/coins/markets?vs_currency=usd&order=market_cap_desc&per_page=10
+```
+
+---
+
+### Other Useful CoinGecko Endpoints
+
+**1. Get single coin details:**
+```
+https://api.coingecko.com/api/v3/coins/bitcoin
+```
+
+**2. Get coin price history:**
+```
+https://api.coingecko.com/api/v3/coins/bitcoin/market_chart?vs_currency=eur&days=7
+```
+
+**3. Get trending coins:**
+```
+https://api.coingecko.com/api/v3/search/trending
+```
+
+**4. Get global crypto stats:**
+```
+https://api.coingecko.com/api/v3/global
+```
+
+---
+
+### Why CoinGecko?
+
+✅ **Free** - No cost, no credit card  
+✅ **No signup** - Start using immediately  
+✅ **Comprehensive** - 10,000+ cryptocurrencies  
+✅ **Reliable** - 99.9% uptime  
+✅ **Updated** - Real-time price data  
+✅ **Well-documented** - Clear API docs  
+✅ **Community trusted** - Used by thousands of developers  
 
 ---
 
@@ -546,6 +694,7 @@ See [LICENSE](LICENSE) file for details.
 ### CoinGecko API
 - [API Documentation](https://www.coingecko.com/en/api/documentation)
 - [API Status](https://status.coingecko.com/)
+- [Community Forum](https://www.coingecko.com/en/community)
 
 ### Web Development
 - [MDN Web Docs](https://developer.mozilla.org/)
